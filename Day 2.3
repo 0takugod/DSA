@@ -1,0 +1,18 @@
+class Solution {
+    public int maxWidthRamp(int[] A) {
+        int N = A.length;
+        Stack<Integer> s = new Stack();
+        for (int i = 0; i < N; i++) {
+            if (s.isEmpty() || A[i] < A[s.peek()]) {
+                s.push(i);
+            }
+        }
+        int res = 0;
+        for (int i = N - 1; i >= 0; i--) {
+            while (!s.isEmpty() && A[s.peek()] <= A[i]) {
+                res = Math.max(res, i - s.pop());
+            }      
+        }
+        return res;
+    }
+}
