@@ -1,0 +1,31 @@
+import java.util.*;  
+class lucky2
+{
+	public static void main(String[] args) throws java.lang.Exception 
+  {
+  	try{
+  		Scanner sc= new Scanner(System.in);
+    int a= sc.nextInt();
+    int i,j;
+    int ind = 0;
+    int draw = 0;
+    int eng = 0;
+    int t=0;
+    int arr[][] = new int[a][5];
+    	for(i=0;i<a;i++){
+    		for(j=0;j<3;j++){
+    			arr[i][j] = sc.nextInt();
+                if(arr[i][j]==7){
+                    t=t+1;
+                }
+            }
+            if(t>0){System.out.println("YES");}
+            else{System.out.println("NO");}
+            t = 0;
+        }
+  	} catch(Exception e){
+  		System.out.println("exception reached");
+  	}
+  	
+  }
+}
