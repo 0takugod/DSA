@@ -1,0 +1,21 @@
+class Solution {
+    public String makeFancyString(String sb) {
+        if(sb.length() < 3) return sb;
+        StringBuilder ans = new StringBuilder();
+        ans.append(sb.charAt(0));
+        ans.append(sb.charAt(1));
+        int x = ans.length();
+        for(int i = 2; i < sb.length(); i ++){
+            if(ans.charAt(x - 1) != sb.charAt(i)) {
+                ans.append(sb.charAt(i));
+                x ++;
+            }
+            else if(ans.charAt(x - 2) != sb.charAt(i)) {
+                ans.append(sb.charAt(i));
+                x ++;
+            }
+        }
+        return ans.toString();
+        
+    }
+}
