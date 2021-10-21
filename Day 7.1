@@ -1,0 +1,22 @@
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        
+        int min = 0;
+        int max = numbers.length - 1;
+        
+        while(min < max) {
+            if(numbers[min] + numbers[max] > target) {
+                max--;
+            } else if(numbers[min] + numbers[max] < target) {
+                min++;
+            } else {
+                min++;
+                max++;
+                return new int[]{min, max};
+            }
+        }
+        
+        return new int[]{-1,-1};
+        
+    }
+}
