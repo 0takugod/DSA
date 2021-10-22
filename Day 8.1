@@ -1,0 +1,38 @@
+import java.util.*;  
+class dance   
+{ 
+   public static void main(String[] args) throws java.lang.Exception 
+   {
+       try{
+           Scanner sc= new Scanner(System.in);
+           int n= sc.nextInt();
+           int f=0;
+           int x;
+           int y;
+           int m=0;
+           while(n>0){
+             x= sc.nextInt();
+             y= sc.nextInt();
+             m=y-x;
+             if(x<y){
+               if(m%2==0){
+                f=m/2;
+               }
+               else{
+                f=(m/2)+2;
+               }
+             }
+             else{
+              f=(x-y);
+             }
+             System.out.println(f);
+             n=n-1;
+             f=0;
+          }
+           
+           
+       }catch(Exception e){
+           System.out.println("exception reached");
+       }
+   }
+}
