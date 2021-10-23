@@ -1,0 +1,50 @@
+import java.io.*;
+public class lcm2
+{
+    public static void main(String[] args) throws IOException{
+    	try{
+    		InputStreamReader r = new InputStreamReader(System.in);
+            BufferedReader br = new BufferedReader(r);
+            String str = br.readLine();
+            int n = Integer.parseInt(str);
+            while(n>0){
+            	String str1 = br.readLine();
+                String[] arr = str1.split(" ", 2);
+                int x = Integer.parseInt(arr[0]);
+                int k = Integer.parseInt(arr[1]);
+                int low = x;
+                int high = x * k;
+                int lowest = 0;
+                int highest = 0;
+                int count = 0;
+                for (int a = low; a < high; a++){
+                	for (int b = a + 1; b <= high; b++){
+                		count++;
+                		int gcd = 1;
+                		for(int m = 1; m <= a && m <= b; ++m){
+                			 if(a % m == 0 && b % m == 0){
+                			 	gcd = m;
+                			 }
+                		}
+                		int lcm = (a * b) / gcd;
+                		if (count == 1){
+                			lowest = lcm;
+                		}
+                		if (lcm < lowest){
+                			lowest = lcm;
+                		}
+                		if (lcm > highest){
+                			highest = lcm;
+                		}
+
+                	}
+                }
+                n=n-1;
+            System.out.println("" + lowest + " " + highest);
+        }
+
+    	}catch(Exception e){
+           System.out.println("exception reached");
+       }
+    }
+}
