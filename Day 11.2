@@ -1,0 +1,39 @@
+class Solution {
+    public double[] sampleStats(int[] count) {
+        double[] statistics = new double[5];
+        int min = 0;
+        while(count[min] == 0)
+            min++;
+        int max = 0, mode = 0, total = 0;
+        long sum = 0;
+        for(int x = 0; x < count.length; x++){
+		   if(count[x] > count[mode])
+                mode = x;
+			if(count[x] > 0)
+                max = x;
+            total += count[x];
+            sum += (x * count[x]);
+        }
+        int halfway = total / 2;
+        double median = 0;
+        int x = 0, y = 0;
+        while(y < halfway){
+            y += count[x]; x++;
+        }
+        if (total % 2 == 1)
+            median = (double) x - 1;
+        else{
+            int upper = x - 1, lower = x - 1;
+            if (y == halfway)
+                upper++;
+            median = (double) (upper + lower) / 2.0;
+        }
+        
+        statistics[0] = (double) min;
+        statistics[1] = (double) max;
+        statistics[2] = (double) (sum * 1.0 / total);
+        statistics[3] = median;
+        statistics[4] = (double) mode;
+        return statistics;        
+    }
+}
