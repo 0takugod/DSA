@@ -1,0 +1,25 @@
+class Solution {
+    public int minOperations(String[] logs) {
+        int pos =0;
+        int dot=0;
+        for(String s: logs){
+            if(s.charAt(s.length()-1)=='/'){
+                for(int i=s.length()-2;i>=0;i--){
+                    if(s.charAt(i)=='.'){
+                        dot=dot+1;
+                    }
+                }
+            }
+            if(dot==2 && pos>0){
+                pos=pos-1;
+            }
+
+            if(dot==0){
+                pos=pos+1;
+            }
+            dot=0;
+        }
+        return pos;
+        
+    }
+}
