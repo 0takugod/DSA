@@ -1,0 +1,17 @@
+class Solution {
+ public int minSteps(String s, String t) {
+       
+     
+     int n = s.length(), ans = 0;
+     int[] arr = new int[26]; //no of alphabets.
+ 	char[] sc=s.toCharArray();   //cuz array is faster than string
+ 	char[] tc=t.toCharArray();   
+     for(int i = 0; i < n; i++) {
+         arr[sc[i] - 'a']++;  //adding the values that exist in string s.
+         arr[tc[i] - 'a']--;  //subtracting the values that we know are present in t.
+     }
+     for(int i : arr) if(i > 0) ans += i;
+     return ans;
+ }
+}
+//bhavayyyy
