@@ -1,0 +1,32 @@
+class Solution {
+    public int minMutation(String start, String end, String[] bank) {
+        int k=-1;
+        int c=0;
+        if(bank.length==0){
+            return -1;
+        }
+        for(int i=0;i<bank.length;i++){
+            String s = bank[i];
+            if (s.equals(end)){
+                k=i;
+                break;
+            }
+        }
+        if(k==-1){
+            return -1;
+        }
+        for(int i=0;i<end.length();i++){
+            if(start.charAt(i)!=end.charAt(i)){
+                c=c+1;
+                
+            }
+        }
+        k=k+1;
+        if(k<c){
+            return -1;
+        }
+        return c;
+        
+    }
+}
+//easy binary search
