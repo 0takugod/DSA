@@ -1,0 +1,25 @@
+class Solution {
+    public int[] smallerNumbersThanCurrent(int[] nums) {
+        int[] count = new int[101];
+        int[] s = new int[nums.length];
+        for(int i : nums){
+           
+            count[i]=count[i]+1;
+            
+        }
+        int a=0;
+        int temp=0;
+        while(a<nums.length){
+            for(int i=0;i<nums[a];i++){
+                temp=temp+count[i];
+            }
+            s[a]=temp;
+            temp=0;
+            a++;
+            
+        }
+        
+        
+      return s;  
+    }
+}
