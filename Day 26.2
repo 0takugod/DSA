@@ -1,0 +1,17 @@
+class Solution {
+       public int findGCD(int[] nums) {
+        int max = 0;
+        int min = 1001;
+
+        for(int e : nums){
+            max = Math.max(max,e);
+            min = Math.min(min,e);
+        }
+        
+        for(int i = 1;i <= min; i++){
+            int divider = min/i;
+            if(min % divider == 0 && max % divider == 0) return divider;
+        }
+        return 1;        
+    }
+}
