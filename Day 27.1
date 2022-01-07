@@ -1,0 +1,28 @@
+class Foo {
+    
+    CountDownLatch latchForSecond = new CountDownLatch(1);
+    CountDownLatch latchForThird = new CountDownLatch(1);
+
+    public Foo() {
+        
+    }
+
+    public void first(Runnable printFirst) throws InterruptedException {
+        // printFirst.run() outputs "first". Do not change or remove this line.
+        printFirst.run();
+        latchForSecond.countDown();
+    }
+
+    public void second(Runnable printSecond) throws InterruptedException {
+        latchForSecond.await();
+        // printSecond.run() outputs "second". Do not change or remove this line.
+        printSecond.run();
+        latchForThird.countDown();
+    }
+
+    public void third(Runnable printThird) throws InterruptedException {
+        latchForThird.await();
+        // printThird.run() outputs "third". Do not change or remove this line.
+        printThird.run();
+    }
+}
