@@ -1,0 +1,22 @@
+public class Solution {
+    // you need to treat n as an unsigned value
+     public int hammingWeight(int n) {
+  
+    int count = 0;
+
+		int mask = 1;
+		int shiftCount = 31;
+
+		while (shiftCount >= 0) {
+
+			if ((n & mask) != 0) // AND operation, 1 & 1 = 1 else 0
+				count++;
+
+			mask = mask << 1;
+
+			shiftCount--;
+		}
+
+		return count;    
+    }
+}
