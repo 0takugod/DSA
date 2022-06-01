@@ -1,0 +1,13 @@
+class Solution {
+    public int[] runningSum(int[] nums) {
+        int sum=nums[0];
+        int yes[]=new int[nums.length];
+        yes[0]=sum;
+        for(int i=1;i<nums.length;i++){
+            yes[i]=sum+nums[i];
+            sum=yes[i];
+        }
+        return yes;
+        
+    }
+}
