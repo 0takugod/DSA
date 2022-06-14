@@ -1,0 +1,24 @@
+class Solution {
+    public int minDistance(String word1, String word2) {
+        
+        int m = word1.length(), n = word2.length();
+        int[][] storage = new int[m+1][n+1];
+        for (int x = 0; x <= m; x++){
+            storage[x][0] = x; // first column
+        }
+        for (int x = 0; x <= n; x++){
+            storage[0][x] = x; // first row
+        }
+
+        for (int x = 1; x <= m; x++){
+            for (int y = 1; y <= n; y++){
+
+                if (word1.charAt(x-1) == word2.charAt(y-1)){
+                    storage[x][y] = storage[x-1][y-1];
+                }else {
+                    storage[x][y] = 1 + Math.min(storage[x-1][y], storage[x][y-1]);
+                }
+            }
+        }
+        return storage[m][n];
+    }
