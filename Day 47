@@ -1,0 +1,27 @@
+import java.util.*;
+class Solution {
+    public int minimumLengthEncoding(String[] words) {
+        StringBuilder sb = new StringBuilder();
+        HashSet<String> set = new HashSet<>();
+        for(String word : words){
+            set.add(word);
+        }
+        // Collection<String> removedWords = new LinkedList<String>(); // 80% faster
+        ArrayList<String> al = new ArrayList<String>(); // 40% faster
+        for(String str : set){
+            for(int j=1; j<str.length(); j++){
+                if(set.contains(str.substring(j))){
+                    // removedWords.add(str.substring(j));
+                    al.add(str.substring(j));
+                }
+            }
+        }
+        // set.removeAll(removedWords);
+        set.removeAll(al);
+        for(String s : set){
+            sb.append(s+"#");
+        }
+        // System.out.println(sb);
+        return sb.length();
+    }
+}
